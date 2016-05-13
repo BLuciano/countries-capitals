@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         reporter: require('jshint-stylish'),
         esversion : 6
       },
-      build: ['Gruntfile.js', 'app/*.js']
+      build: ['Gruntfile.js', 'app/**/*.js']
     },
 
     uglify: {
@@ -46,12 +46,16 @@ module.exports = function(grunt) {
       }
     },
 
-    webpack: {
-      build: {
-        entry : "./app/main.js",
-        output : {
-          path : "./build/js/",
-          filename : "app.js"
+    //Call this every time a new bower component is installed
+    bower_concat : {
+      all :{
+        dest: {
+          'js' : 'build/js/bower.js',
+          'css' : 'build/css/bower.css'
+        },
+        dependencies :  {
+          'angular-animate' : 'angular',
+          'angular-route' : 'angular'        
         }
       }
     },
@@ -76,7 +80,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: 'app/**/*.js',
-        tasks: ['jshint', 'webpack']
+        tasks: ['jshint']
       }
     }
   });
@@ -87,10 +91,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-bower-concat');
 
   //TASKS
-  grunt.registerTask('default', ['clean:dev', 'jshint', 'webpack', 'sass']);
+  grunt.registerTask('default', ['clean:dev', 'jshint', 'sass']);
   grunt.registerTask('minify', ['clean:min', 'cssmin', 'uglify']);
+  grunt.registerTask('bowerConcat', ['bower_concat']);
 };
