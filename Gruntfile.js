@@ -73,6 +73,16 @@ module.exports = function(grunt) {
       ]
     },
 
+    copy: {
+      files: {
+        flatten : true,
+        cwd: 'app/',
+        src: '**/*.html',
+        dest: 'build/',
+        expand: true
+      }
+    },
+
     watch: {
       stylesheets: {
         files: ['app/**/*.scss'],
@@ -81,6 +91,10 @@ module.exports = function(grunt) {
       scripts: {
         files: 'app/**/*.js',
         tasks: ['jshint']
+      },
+      html: {
+        files : 'app/**/*.html',
+        tasks : ['copy']
       }
     }
   });
@@ -93,9 +107,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-bower-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   //TASKS
-  grunt.registerTask('default', ['clean:dev', 'jshint', 'sass']);
+  grunt.registerTask('default', ['clean:dev', 'jshint', 'sass', 'copy']);
   grunt.registerTask('minify', ['clean:min', 'cssmin', 'uglify']);
   grunt.registerTask('bowerConcat', ['bower_concat']);
 };
