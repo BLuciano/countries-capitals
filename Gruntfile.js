@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         reporter: require('jshint-stylish'),
         esversion : 6
       },
-      build: ['Gruntfile.js', 'app/**/*.js']
+      build: ['Gruntfile.js', 'app/**/*.js', '!app/bower_components/**']
     },
 
     uglify: {
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'build/js/app.min.js': 'build/js/app.js'
+          'build/js/app.min.js': 'app/js/app.js'
         }
       }
     },
@@ -60,6 +60,13 @@ module.exports = function(grunt) {
       }
     },
 
+    concat : {
+      dist: {
+        src: ['app/main.js', 'app/**/*.js', '!app/bower_components/**'],
+        dest: 'build/js/app.js',
+      }
+    },
+
     clean: {
       dev : [
         './build/js/app.js',
@@ -90,7 +97,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: 'app/**/*.js',
-        tasks: ['jshint']
+        tasks: ['jshint', 'concat']
       },
       html: {
         files : 'app/**/*.html',
@@ -107,10 +114,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-bower-concat');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   //TASKS
-  grunt.registerTask('default', ['clean:dev', 'jshint', 'sass', 'copy']);
+  grunt.registerTask('default', ['clean:dev', 'jshint', 'concat', 'sass', 'copy']);
   grunt.registerTask('minify', ['clean:min', 'cssmin', 'uglify']);
   grunt.registerTask('bowerConcat', ['bower_concat']);
 };
