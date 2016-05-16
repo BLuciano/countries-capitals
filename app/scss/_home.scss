@@ -1,0 +1,19 @@
+.home{
+	padding-top: 100px;
+	height: 100%;
+	background: rgba(0,0,0, .5);
+
+	.info{
+		line-height: 2em;
+		font-size: 1.25em;
+		color: #fff;
+
+		a{
+			color: #ccc;
+
+			&:hover{
+				text-decoration: underline;	
+			}
+		}
+	}
+}
