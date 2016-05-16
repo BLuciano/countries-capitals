@@ -71,6 +71,42 @@ a {
   text-decoration: underline;
 }
 
+.countries {
+  height: 100%;
+  padding-top: 50px;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.countries .table-scroll {
+  width: 95%;
+  margin: 0 auto;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.countries-tbl {
+  border: 2px solid black;
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.countries-tbl tr {
+  padding: 10px 0;
+}
+.countries-tbl th, .countries-tbl td {
+  padding: 10px;
+  border: 1px solid black;
+  color: #fff;
+}
+.countries-tbl th {
+  background-color: #333;
+}
+.countries-tbl tr:nth-child(odd) {
+  background-color: #005ce6;
+}
+.countries-tbl tr:nth-child(even) {
+  background-color: #002966;
+}
+
 footer {
   margin: 0;
   padding: 25px 0;
