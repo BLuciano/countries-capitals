@@ -4,6 +4,13 @@ mainApp.config(['$routeProvider', function($routeProvider){
 		controller : "countriesCtrl"
 	});
 }])
-.controller("countriesCtrl", ["$scope", function($scope){
-
+.controller("countriesCtrl", ['$scope', 'getData', '$q', function($scope, getData, $q){
+	getData()
+		.then(function(data){
+			return $q.when(data);
+		})
+		.then(function(){
+			$scope.data = data;
+			console.log($scope.data);
+		});
 }]);

@@ -1,13 +1,8 @@
 mainApp.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when("/", {
-		templateUrl : "./home.html",
-		controller : "homeCtrl"
+		templateUrl : "./home.html"
 	}).when("/home", {
-		templateUrl : "./home.html",
-		controller : "homeCtrl"
+		templateUrl : "./home.html"
 	})
 	.otherwise("/");
-}])
-.controller("homeCtrl", ["$scope", function($scope){
-
 }]);
