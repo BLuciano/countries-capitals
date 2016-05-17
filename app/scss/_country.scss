@@ -1,0 +1,48 @@
+.country{
+	height: 100%;
+	padding: 50px 0 100px 0;
+	background-color: rgba(0,0,0,.90);
+	color: #fff;
+
+	h2{	
+		margin: 0;
+		padding: 25px 0;
+		font-size: 2em;
+	}
+
+	.description{
+		margin-bottom: 50px;
+		width: 50%;
+		float: left;
+
+		p{
+			color: #ccc;
+			text-align: right;
+		}
+	}
+
+	.results{
+		margin-bottom: 50px;
+		width: 50%;
+		display: inline-block;
+		p{
+			text-align: left;
+			color: #fff;
+			padding-left: 10px;
+		}
+
+		a{
+			color: #fff;
+			font-style: italic;
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	img{
+		width: 250px;
+		height: auto;
+	}
+}

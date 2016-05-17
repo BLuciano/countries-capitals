@@ -7,7 +7,6 @@ html {
 
 body {
   margin: 0;
-  height: 100%;
   background: url(../imgs/map.jpg) no-repeat center center fixed;
   background-size: cover;
 }
@@ -55,7 +54,7 @@ a {
 }
 
 .home {
-  padding-top: 100px;
+  padding: 100px 0;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
@@ -73,7 +72,7 @@ a {
 
 .countries {
   height: 100%;
-  padding-top: 50px;
+  padding: 50px 0 100px 0;
   background-color: rgba(0, 0, 0, 0.9);
 }
 .countries .table-scroll {
@@ -105,6 +104,48 @@ a {
 }
 .countries-tbl tr:nth-child(even) {
   background-color: #002966;
+}
+
+.country {
+  height: 100%;
+  padding: 50px 0 100px 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+}
+.country h2 {
+  margin: 0;
+  padding: 25px 0;
+  font-size: 2em;
+}
+.country .description {
+  margin-bottom: 50px;
+  width: 50%;
+  float: left;
+}
+.country .description p {
+  color: #ccc;
+  text-align: right;
+}
+.country .results {
+  margin-bottom: 50px;
+  width: 50%;
+  display: inline-block;
+}
+.country .results p {
+  text-align: left;
+  color: #fff;
+  padding-left: 10px;
+}
+.country .results a {
+  color: #fff;
+  font-style: italic;
+}
+.country .results a:hover {
+  text-decoration: underline;
+}
+.country img {
+  width: 250px;
+  height: auto;
 }
 
 footer {
