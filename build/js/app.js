@@ -14,11 +14,15 @@ mainApp.config(['$routeProvider', function($routeProvider){
 		controller : "countriesCtrl"
 	});
 }])
-.controller("countriesCtrl", ['$scope', 'getData', '$q', function($scope, getData, $q){
+.controller("countriesCtrl", ['$scope', 'getData', '$q', 'showCountry', 
+	function($scope, getData, $q, showCountry){
+	
 	getData()
-		.then(function(data){
-			$scope.countries = data.geonames;
-		});
+	.then(function(data){
+		$scope.countries = data.geonames;
+	});
+
+	$scope.showCountry = showCountry;
 }]);
 mainApp.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when("/countries:country", {
@@ -36,6 +40,12 @@ mainApp.factory('getData', ['$http', '$q', function($http, $q){
 			.then(function(response){
 				return $q.when(response.data);
 			});
+	};
+}]);
+
+mainApp.factory('showCountry', ['$location', function($location){
+	return function(country){
+		$location.path('countries:' + country);
 	};
 }]);
 mainApp.config(['$routeProvider', function($routeProvider){

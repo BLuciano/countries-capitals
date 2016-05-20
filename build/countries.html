@@ -10,7 +10,7 @@
 				<th>Continent</th>
 			</tr>
 			<!-- Data will go here ng-repeat -->
-			<tr ng-repeat="country in countries | orderBy: countryName">
+			<tr class="clickable" ng-repeat="country in countries | orderBy: countryName" ng-click="showCountry(country.countryName)">
 				<td>{{country.countryName}}</td>
 				<td>{{country.countryCode}}</td>
 				<td>{{country.capital}}</td>

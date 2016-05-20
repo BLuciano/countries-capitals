@@ -43,6 +43,10 @@ a {
   background-color: #002966;
 }
 
+.clickable:hover {
+  cursor: pointer;
+}
+
 .mainHdr {
   padding: 50px 25px;
   background-color: #002966;
@@ -104,6 +108,9 @@ a {
 }
 .countries-tbl tr:nth-child(even) {
   background-color: #002966;
+}
+.countries-tbl tr.clickable:hover {
+  background-color: #e67300;
 }
 
 .country {

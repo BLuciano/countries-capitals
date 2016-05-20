@@ -38,4 +38,8 @@
 	tr:nth-child(even){
 		background-color: $blue;
 	}
+
+	tr.clickable:hover{
+	background-color: #e67300;
+	}
 }

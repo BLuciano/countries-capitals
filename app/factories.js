@@ -7,3 +7,9 @@ mainApp.factory('getData', ['$http', '$q', function($http, $q){
 			});
 	};
 }]);
+
+mainApp.factory('showCountry', ['$location', function($location){
+	return function(country){
+		$location.path('countries:' + country);
+	};
+}]);

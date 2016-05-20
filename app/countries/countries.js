@@ -4,9 +4,13 @@ mainApp.config(['$routeProvider', function($routeProvider){
 		controller : "countriesCtrl"
 	});
 }])
-.controller("countriesCtrl", ['$scope', 'getData', '$q', function($scope, getData, $q){
+.controller("countriesCtrl", ['$scope', 'getData', '$q', 'showCountry', 
+	function($scope, getData, $q, showCountry){
+	
 	getData()
-		.then(function(data){
-			$scope.countries = data.geonames;
-		});
+	.then(function(data){
+		$scope.countries = data.geonames;
+	});
+
+	$scope.showCountry = showCountry;
 }]);
