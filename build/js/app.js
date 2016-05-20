@@ -17,11 +17,8 @@ mainApp.config(['$routeProvider', function($routeProvider){
 .controller("countriesCtrl", ['$scope', 'getData', '$q', function($scope, getData, $q){
 	getData()
 		.then(function(data){
-			return $q.when(data);
-		})
-		.then(function(){
-			$scope.data = data;
-			console.log($scope.data);
+			$scope.countries = data.geonames;
+			console.log(data.geonames);
 		});
 }]);
 mainApp.config(['$routeProvider', function($routeProvider){
@@ -35,7 +32,7 @@ mainApp.config(['$routeProvider', function($routeProvider){
 }]);
 mainApp.factory('getData', ['$http', '$q', function($http, $q){
 	return function(){
-		var url = 'http://api.geonames.org/countryInfo?username=lucianogeonames';
+		var url = 'http://api.geonames.org/countryInfoJSON?username=lucianogeonames';
 		return $http.get(url)
 			.then(function(response){
 				return $q.when(response.data);
