@@ -8,6 +8,5 @@ mainApp.config(['$routeProvider', function($routeProvider){
 	getData()
 		.then(function(data){
 			$scope.countries = data.geonames;
-			console.log(data.geonames);
 		});
 }]);

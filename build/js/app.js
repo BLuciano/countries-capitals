@@ -18,7 +18,6 @@ mainApp.config(['$routeProvider', function($routeProvider){
 	getData()
 		.then(function(data){
 			$scope.countries = data.geonames;
-			console.log(data.geonames);
 		});
 }]);
 mainApp.config(['$routeProvider', function($routeProvider){
@@ -33,7 +32,7 @@ mainApp.config(['$routeProvider', function($routeProvider){
 mainApp.factory('getData', ['$http', '$q', function($http, $q){
 	return function(){
 		var url = 'http://api.geonames.org/countryInfoJSON?username=lucianogeonames';
-		return $http.get(url)
+		return $http.get(url, {cache : true})
 			.then(function(response){
 				return $q.when(response.data);
 			});
