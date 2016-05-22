@@ -1,9 +1,14 @@
 mainApp.config(['$routeProvider', function($routeProvider){
-	$routeProvider.when("/countries:country", {
+	$routeProvider.when("/countries/:country", {
 		templateUrl : "./country.html",
-		controller : "countryCtrl"
-	});
+		controller : "countryCtrl",
+		resolve : {
+      		countryInfo : ['getCountry', '$route', function(getCountry, $route) {
+        	return getCountry($route.current.params.country);
+        }]}
+    });
 }])
-.controller("countryCtrl", ["$scope", function($scope){
-
+.controller("countryCtrl", ['$scope', 'showCountry', 'countryInfo', 
+	function($scope, showCountry, countryInfo){
+		$scope.country = countryInfo.geonames[0];
 }]);

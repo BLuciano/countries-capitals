@@ -1,5 +1,5 @@
 <section class="country">
-  <h2>COUNTRY NAME</h2>
+  <h2>{{country.countryName | uppercase}}</h2>
   <div class="description">
     <p>Population of Country:</p>
     <p>Area:</p> 
@@ -8,14 +8,14 @@
     <p># neighbors:</p> 
   </div>
   <div class="results">
-    <p>393939393</p>
-    <p>3933939 square km</p>
-    <p>some capital</p>
-    <p>393939</p>
+    <p>{{country.population | number}}</p>
+    <p>{{country.areaInSqKm | number}} square km</p>
+    <p>{{country.capital}}</p>
+    <p>?????</p>
     <p>
-      <a ng-href="#/countries:??" class="neighbor"> country1 </a>,
-      <a ng-href="#/countries:??" class="neighbor"> country2 </a>,
-      <a ng-href="#/countries:??" class="neighbor"> country3 </a>
+      <a ng-href="#/countries/:??" class="neighbor"> country1 </a>,
+      <a ng-href="#/countries/:??" class="neighbor"> country2 </a>,
+      <a ng-href="#/countries/:??" class="neighbor"> country3 </a>
     </p>
   </div>
 

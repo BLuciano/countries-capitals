@@ -14,8 +14,8 @@ mainApp.config(['$routeProvider', function($routeProvider){
 		controller : "countriesCtrl"
 	});
 }])
-.controller("countriesCtrl", ['$scope', 'getData', '$q', 'showCountry', 
-	function($scope, getData, $q, showCountry){
+.controller("countriesCtrl", ['$scope', 'getData', 'showCountry', 
+	function($scope, getData, showCountry){
 	
 	getData()
 	.then(function(data){
@@ -25,13 +25,18 @@ mainApp.config(['$routeProvider', function($routeProvider){
 	$scope.showCountry = showCountry;
 }]);
 mainApp.config(['$routeProvider', function($routeProvider){
-	$routeProvider.when("/countries:country", {
+	$routeProvider.when("/countries/:country", {
 		templateUrl : "./country.html",
-		controller : "countryCtrl"
-	});
+		controller : "countryCtrl",
+		resolve : {
+      		countryInfo : ['getCountry', '$route', function(getCountry, $route) {
+        	return getCountry($route.current.params.country);
+        }]}
+    });
 }])
-.controller("countryCtrl", ["$scope", function($scope){
-
+.controller("countryCtrl", ['$scope', 'showCountry', 'countryInfo', 
+	function($scope, showCountry, countryInfo){
+		$scope.country = countryInfo.geonames[0];
 }]);
 mainApp.factory('getData', ['$http', '$q', function($http, $q){
 	return function(){
@@ -43,9 +48,20 @@ mainApp.factory('getData', ['$http', '$q', function($http, $q){
 	};
 }]);
 
+mainApp.factory('getCountry', ['$http', '$q', function($http, $q){
+	return function(country){
+		country = country.replace(':','');
+		var url = 'http://api.geonames.org/countryInfoJSON?country=' + country + '&username=lucianogeonames';
+		return $http.get(url)
+			.then(function(response){
+				return $q.when(response.data);
+			});
+	};
+}]);
+
 mainApp.factory('showCountry', ['$location', function($location){
 	return function(country){
-		$location.path('countries:' + country);
+		$location.path('countries/:' + country);
 	};
 }]);
 mainApp.config(['$routeProvider', function($routeProvider){

@@ -4,8 +4,8 @@ mainApp.config(['$routeProvider', function($routeProvider){
 		controller : "countriesCtrl"
 	});
 }])
-.controller("countriesCtrl", ['$scope', 'getData', '$q', 'showCountry', 
-	function($scope, getData, $q, showCountry){
+.controller("countriesCtrl", ['$scope', 'getData', 'showCountry', 
+	function($scope, getData, showCountry){
 	
 	getData()
 	.then(function(data){
