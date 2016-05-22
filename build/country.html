@@ -10,8 +10,10 @@
   <div class="results">
     <p>{{country.population | number}}</p>
     <p>{{country.areaInSqKm | number}} square km</p>
-    <p>{{country.capital}}</p>
-    <p>{{capitalPop | number}}</p>
+    <p ng-show="country.capital">{{country.capital}}</p>
+    <p ng-show="country.capital">{{capitalPop | number}}</p>
+    <p ng-hide="country.capital">N/A</p>
+    <p ng-hide="country.capital">0</p>
     <p>
       <a ng-href="#/countries/:??" class="neighbor"> country1 </a>,
       <a ng-href="#/countries/:??" class="neighbor"> country2 </a>,
