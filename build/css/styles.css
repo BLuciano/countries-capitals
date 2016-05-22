@@ -150,6 +150,9 @@ a {
 .country .results a:hover {
   text-decoration: underline;
 }
+.country .results .neighbor {
+  padding-right: 25px;
+}
 .country img {
   width: 250px;
   height: auto;

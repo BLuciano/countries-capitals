@@ -14,16 +14,16 @@
     <p ng-show="country.capital">{{capitalPop | number}}</p>
     <p ng-hide="country.capital">N/A</p>
     <p ng-hide="country.capital">0</p>
-    <p>
-      <a ng-href="#/countries/:??" class="neighbor"> country1 </a>,
-      <a ng-href="#/countries/:??" class="neighbor"> country2 </a>,
-      <a ng-href="#/countries/:??" class="neighbor"> country3 </a>
+    <p ng-show="neighbors" class="neighbor">
+      <a ng-repeat="neighbor in neighbors" ng-href="#/countries/:{{ neighbor.countryCode}}">{{neighbor.name}}</a>
     </p>
+    <p ng-hide="neighbors" class="neighbor">N/A</p>
   </div>
 
-  <img src="#" alt="country map"/>
-  <img src="#" alt="country flag"/>
+  <img id='myImage' ng-src="http://www.geonames.org/img/country/250/{{country.countryCode || uppercase}}.png" alt="country map" />
+  <img ng-src="http://www.geonames.org/flags/x/{{country.countryCode | lowercase}}.gif" alt="country flag"/>
   <br />
+
   <a ng-href="#/home" class="btn">Home</a>
   <a ng-href="#/countries" class="btn">Browse Countries</a>
 </section>

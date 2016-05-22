@@ -36,3 +36,13 @@ mainApp.factory('getCapital', ['$http', '$q', function($http, $q){
 			});
 	};
 }]);
+
+mainApp.factory('getNeighbors', ['$http', '$q', function($http, $q){
+	return function(code){
+		var url = 'http://api.geonames.org/neighboursJSON?country=' + code + '&username=lucianogeonames';
+		return $http.get(url)
+			.then(function(response){
+				return $q.when(response.data);
+			});
+	};
+}]);

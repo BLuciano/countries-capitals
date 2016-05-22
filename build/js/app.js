@@ -34,8 +34,8 @@ mainApp.config(['$routeProvider', function($routeProvider){
         }]}
     });
 }])
-.controller("countryCtrl", ['$scope', 'getCapital', 'countryInfo', 
-	function($scope, getCapital, countryInfo){
+.controller("countryCtrl", ['$scope', 'getCapital', 'getNeighbors', 'countryInfo', 
+	function($scope, getCapital, getNeighbors, countryInfo){
 		var country = countryInfo.geonames[0];
 		$scope.country = country;
 		
@@ -47,7 +47,11 @@ mainApp.config(['$routeProvider', function($routeProvider){
 					return;
  				}
 			});
-			
+		});
+
+		getNeighbors(country.countryCode)
+		.then(function(data){
+			$scope.neighbors = data.geonames;
 		});
 }]);
 mainApp.factory('getData', ['$http', '$q', function($http, $q){
@@ -82,6 +86,16 @@ mainApp.factory('getCapital', ['$http', '$q', function($http, $q){
 		var url = 'http://api.geonames.org/searchJSON?&q=' + capital +
 		'&name_equals=' + capital + '&isNameRequired=true&country=' + 
 		code + '&style=LONG&username=lucianogeonames';
+		return $http.get(url)
+			.then(function(response){
+				return $q.when(response.data);
+			});
+	};
+}]);
+
+mainApp.factory('getNeighbors', ['$http', '$q', function($http, $q){
+	return function(code){
+		var url = 'http://api.geonames.org/neighboursJSON?country=' + code + '&username=lucianogeonames';
 		return $http.get(url)
 			.then(function(response){
 				return $q.when(response.data);

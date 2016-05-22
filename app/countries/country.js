@@ -8,8 +8,8 @@ mainApp.config(['$routeProvider', function($routeProvider){
         }]}
     });
 }])
-.controller("countryCtrl", ['$scope', 'getCapital', 'countryInfo', 
-	function($scope, getCapital, countryInfo){
+.controller("countryCtrl", ['$scope', 'getCapital', 'getNeighbors', 'countryInfo', 
+	function($scope, getCapital, getNeighbors, countryInfo){
 		var country = countryInfo.geonames[0];
 		$scope.country = country;
 		
@@ -21,6 +21,10 @@ mainApp.config(['$routeProvider', function($routeProvider){
 					return;
  				}
 			});
-			
+		});
+
+		getNeighbors(country.countryCode)
+		.then(function(data){
+			$scope.neighbors = data.geonames;
 		});
 }]);
