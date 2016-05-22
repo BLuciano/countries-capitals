@@ -8,7 +8,19 @@ mainApp.config(['$routeProvider', function($routeProvider){
         }]}
     });
 }])
-.controller("countryCtrl", ['$scope', 'showCountry', 'countryInfo', 
-	function($scope, showCountry, countryInfo){
-		$scope.country = countryInfo.geonames[0];
+.controller("countryCtrl", ['$scope', 'getCapital', 'countryInfo', 
+	function($scope, getCapital, countryInfo){
+		var country = countryInfo.geonames[0];
+		$scope.country = country;
+		
+		getCapital(country.countryCode, country.capital)
+		.then(function(data){
+			angular.forEach(data.geonames, function(value, key){
+				if(country.capital === value.name){
+					$scope.capitalPop = value.population;
+					return;
+ 				}
+			});
+			
+		});
 }]);

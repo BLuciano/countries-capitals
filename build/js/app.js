@@ -34,9 +34,21 @@ mainApp.config(['$routeProvider', function($routeProvider){
         }]}
     });
 }])
-.controller("countryCtrl", ['$scope', 'showCountry', 'countryInfo', 
-	function($scope, showCountry, countryInfo){
-		$scope.country = countryInfo.geonames[0];
+.controller("countryCtrl", ['$scope', 'getCapital', 'countryInfo', 
+	function($scope, getCapital, countryInfo){
+		var country = countryInfo.geonames[0];
+		$scope.country = country;
+		
+		getCapital(country.countryCode, country.capital)
+		.then(function(data){
+			angular.forEach(data.geonames, function(value, key){
+				if(country.capital === value.name){
+					$scope.capitalPop = value.population;
+					return;
+ 				}
+			});
+			
+		});
 }]);
 mainApp.factory('getData', ['$http', '$q', function($http, $q){
 	return function(){
@@ -62,6 +74,18 @@ mainApp.factory('getCountry', ['$http', '$q', function($http, $q){
 mainApp.factory('showCountry', ['$location', function($location){
 	return function(country){
 		$location.path('countries/:' + country);
+	};
+}]);
+
+mainApp.factory('getCapital', ['$http', '$q', function($http, $q){
+	return function(code, capital){
+		var url = 'http://api.geonames.org/searchJSON?&q=' + capital +
+		'&name_equals=' + capital + '&isNameRequired=true&country=' + 
+		code + '&style=LONG&username=lucianogeonames';
+		return $http.get(url)
+			.then(function(response){
+				return $q.when(response.data);
+			});
 	};
 }]);
 mainApp.config(['$routeProvider', function($routeProvider){

@@ -24,3 +24,15 @@ mainApp.factory('showCountry', ['$location', function($location){
 		$location.path('countries/:' + country);
 	};
 }]);
+
+mainApp.factory('getCapital', ['$http', '$q', function($http, $q){
+	return function(code, capital){
+		var url = 'http://api.geonames.org/searchJSON?&q=' + capital +
+		'&name_equals=' + capital + '&isNameRequired=true&country=' + 
+		code + '&style=LONG&username=lucianogeonames';
+		return $http.get(url)
+			.then(function(response){
+				return $q.when(response.data);
+			});
+	};
+}]);
