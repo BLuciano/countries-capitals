@@ -1,4 +1,4 @@
-var mainApp = angular.module('mainApp', ['ngRoute'])
+var mainApp = angular.module('mainApp', ['ngRoute', 'ngAnimate'])
 	.run(function($rootScope, $location) {
     	$rootScope.$on('$routeChangeError', function() {
         	$location.path('/');
