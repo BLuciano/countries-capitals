@@ -34,6 +34,8 @@
 		a{
 			color: #fff;
 			font-style: italic;
+			margin: 0 5px;
+			display: inline-block;
 
 			&:hover{
 				text-decoration: underline;
@@ -46,7 +48,13 @@
 	}
 
 	img{
-		width: 250px;
-		height: auto;
+		height: 250px;
+		max-width: 45%;
+		width: auto;
+		padding: 2.5%;
+	}
+
+	.btn{
+		margin: 25px 10px 0 10px;
 	}
 }

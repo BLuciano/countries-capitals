@@ -41,12 +41,12 @@ mainApp.config(['$routeProvider', function($routeProvider){
 		
 		getCapital(country.countryCode, country.capital)
 		.then(function(data){
-			angular.forEach(data.geonames, function(value, key){
-				if(country.capital === value.name){
-					$scope.capitalPop = value.population;
-					return;
+			for(var i = 0; i < data.geonames.length; i++){
+				if(country.capital === data.geonames[i].name){
+					$scope.capitalPop = data.geonames[i].population;
+					break;
  				}
-			});
+			}
 		});
 
 		getNeighbors(country.countryCode)

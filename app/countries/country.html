@@ -5,7 +5,7 @@
     <p>Area:</p> 
     <p>Capital:</p> 
     <p>Population of Capital:</p> 
-    <p># neighbors:</p> 
+    <p>{{neighbors.length}} neighbors:</p> 
   </div>
   <div class="results">
     <p>{{country.population | number}}</p>
@@ -17,7 +17,7 @@
     <p ng-show="neighbors" class="neighbor">
       <a ng-repeat="neighbor in neighbors" ng-href="#/countries/:{{ neighbor.countryCode}}">{{neighbor.name}}</a>
     </p>
-    <p ng-hide="neighbors" class="neighbor">N/A</p>
+    <p ng-hide="neighbors.length" class="neighbor">N/A</p>
   </div>
 
   <img id='myImage' ng-src="http://www.geonames.org/img/country/250/{{country.countryCode || uppercase}}.png" alt="country map" />
