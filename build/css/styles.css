@@ -1,11 +1,11 @@
 html {
   box-sizing: border-box;
-  min-height: 100%;
   height: 100%;
   font-family: 'Slabo 27px', serif;
 }
 
 body {
+  height: 100%;
   margin: 0;
   background: url(../imgs/map.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -22,12 +22,9 @@ a {
 .container {
   width: 1000px;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%;
   text-align: center;
-}
-
-.views {
-  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .btn {
@@ -59,8 +56,6 @@ a {
 
 .home {
   padding: 100px 0;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
 }
 .home .info {
   line-height: 2em;
@@ -75,9 +70,7 @@ a {
 }
 
 .countries {
-  height: 100%;
   padding: 50px 0 100px 0;
-  background-color: rgba(0, 0, 0, 0.9);
 }
 .countries .table-scroll {
   width: 95%;
@@ -114,9 +107,7 @@ a {
 }
 
 .country {
-  height: 100%;
   padding: 50px 0 100px 0;
-  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
 }
 .country h2 {
