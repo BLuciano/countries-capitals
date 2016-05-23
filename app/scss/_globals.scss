@@ -20,6 +20,8 @@ a{
 }
 
 .container{
+	position: relative;
+	z-index: 1000;
 	width: 1000px;
 	margin: 0 auto;
 	min-height: 100%;
@@ -43,24 +45,4 @@ a{
 
 .clickable:hover{
 	cursor: pointer;
-}
-
-.views.ng-enter,
-.views.ng-leave.ng-leave-active { 
- 	opacity: 0;
-	-ms-transform: scale(.25, .25);
-	-webkit-transform: scale(.25, .25);
-	transform: scale(.25, .25);
-  	-webkit-transition: .5s linear all;
-  	transition: .5s linear all;
-}
-
-.views.ng-leave,
-.views.ng-enter.ng-enter-active { 
-  	opacity:1;
-  	-ms-transform: scale(1, 1);
-	-webkit-transform: scale(1, 1);
-	transform: scale(1, 1);
-  	-webkit-transition: .5s linear all .7s;
-  	transition: .5s linear all .7s;
 }
