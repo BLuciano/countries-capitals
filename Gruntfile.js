@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         },
         dependencies :  {
           'angular-animate' : 'angular',
-          'angular-route' : 'angular'        
+          'angular-route' : 'angular'       
         }
       }
     },
