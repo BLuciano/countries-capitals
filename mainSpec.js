@@ -36,20 +36,6 @@ describe('getCountry', function() {
     }));
 });
 
-/*describe('showCountry', function(){
-	beforeEach(module('mainApp'));
-
-	it('should change location to specific country page',
-	inject(function(showCountry, $location, $rootScope){
-		$rootScope.$apply(function() {
-        	$location.path('/countries:US');
-        });
-		showCountry('US');
-		$rootScope.$digest();
-		expect($location.path).toBe('/countries/'); 
-	}));
-});*/
-
 describe('getCapital', function() {
     beforeEach(module('mainApp'));
 
@@ -157,5 +143,3 @@ describe("mainApp", function() {
         }));
     });
 });
-
-//CONTROLLERS TESTS
